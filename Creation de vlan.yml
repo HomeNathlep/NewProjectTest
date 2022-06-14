@@ -1,0 +1,14 @@
+---
+- name: IOS VLAN
+  hosts: switches
+
+  tasks:
+    - name: Create Vlan
+      ios_vlans:
+        config:
+          - name: "{{vlan_name}}"
+            vlan_id: "{{vlan_id}}"
+            shutdown: enabled
+            state: active
+        state: merged
+      register: vln
